@@ -1,12 +1,14 @@
-import sampleData from "@/db/sample-data";
 import ProductList from "@/components/shared/product/product-list";
+import { getLatestProducts } from "@/lib/actions/product.actions";
 
-export default function HomePge() {
+export default async function HomePge() {
+  const latestProducts = await getLatestProducts();
+
   return (
     <ProductList
-      data={sampleData.products}
+      data={latestProducts}
       title="Newest Arrival"
-      limit ={4}
+      limit={4}
     />
   );
 }
